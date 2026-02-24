@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "build": "next build && powershell -Command \"Copy-Item -Path 'public' -Destination '.next/standalone/public' -Recurse -Force; New-Item -ItemType Directory -Path '.next/standalone/.next/static' -Force; Copy-Item -Path '.next/static/*' -Destination '.next/standalone/.next/static' -Recurse -Force\"",
+    "start": "node .next/standalone/server.js"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
@@ -35,7 +34,6 @@
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
-
     "axios": "^1.12.0",
     "next": "16.1.6",
     "react": "19.2.3",

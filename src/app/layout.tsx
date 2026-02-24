@@ -15,12 +15,6 @@ export const metadata: Metadata = {
 
     description: siteConfig.description,
 
-    verification: {
-        google: siteConfig.googleVerification,
-        other: {
-            "naver-site-verification": siteConfig.naverVerification,
-        },
-    },
 
     openGraph: {
         siteName: siteConfig.name,
@@ -36,11 +30,7 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout({ children }:{ children: React.ReactNode }) {
     return (
         <html lang="ko">
             <body className="min-h-screen bg-background">

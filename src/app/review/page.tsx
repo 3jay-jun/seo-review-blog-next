@@ -120,15 +120,15 @@ export default function ReviewPage() {
                                 <li key={i} className="flex items-center text-sm md:text-base">
                                     <span className="text-yellow-500 mr-2">✔</span>
                                     <span className={list.highlight ? "font-bold text-slate-900" : "text-slate-600"}>
-              {list.text}
-            </span>
+                                      {list.text}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
                 <p className="text-sm bg-slate-100 p-4 rounded-lg">
-                    방문 상담 시 <strong>"분진 추가금 10만원 혹은 새집증후군 25만원"</strong>에 대한 안내를 받았습니다.
+                    방문 상담 시 <strong>"분진 추가금 혹은 새집증후군 25만원"</strong>에 대한 안내를 받았습니다.
                     이미 방문을 하신 상태였고 다음 일정도 있었기에, 쾌적한 새집을 위해 기분 좋게 진행을 결정했습니다.
                 </p>
 
@@ -408,8 +408,6 @@ export default function ReviewPage() {
                         </div>
                     </section>
 
-
-
                     {/* 강조 문구 (Quote) */}
                     <div className="relative py-10 px-6 bg-gray-900 rounded-3xl overflow-hidden text-center">
                         <div className="relative z-10">
@@ -488,7 +486,7 @@ export default function ReviewPage() {
                     <div className="text-center mb-10">
                         <h3 className="text-3xl font-black text-gray-900 mb-4 italic">"이게 A/S를 마친 상태라고요?"</h3>
                         <p className="text-lg text-gray-600">
-                            참다못해 제가 직접 물티슈 한 장으로 닦아보았습니다. <strong>업체는 못 닦은 게 아니라 '안' 닦은 것입니다.</strong>
+                            참다못해 제가 직접 걸레로 닦아보았습니다. <strong>업체는 못 닦은 게 아니라 '안' 닦은 것입니다.</strong>
                         </p>
                     </div>
 
@@ -500,7 +498,7 @@ export default function ReviewPage() {
                                 <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-1 rounded-md font-bold">A/S 직후</div>
                             </div>
                             <p className="mt-3 text-red-600 font-bold flex items-center">
-                                <span className="text-2xl mr-2">👎</span> 레일 구석에 그대로 방치된 먼지 뭉치
+                                <span className="text-2xl mr-2">👎</span> 수납장, 레일 위 그대로 방치된 먼지
                             </p>
                         </div>
                         <div className="group relative">
@@ -509,7 +507,7 @@ export default function ReviewPage() {
                                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-1 rounded-md font-bold">본인 직접 청소</div>
                             </div>
                             <p className="mt-3 text-blue-600 font-bold flex items-center">
-                                <span className="text-2xl mr-2">👍</span> 물티슈 한 장으로 가볍게 닦이는 분진
+                                <span className="text-2xl mr-2">👍</span> 걸레로 닦이는 먼지
                             </p>
                         </div>
                     </div>
@@ -522,7 +520,7 @@ export default function ReviewPage() {
                                 <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-1 rounded-md font-bold">A/S 직후</div>
                             </div>
                             <p className="mt-3 text-red-600 font-bold flex items-center">
-                                <span className="text-2xl mr-2">👎</span> A/S 받았음에도 계속 있는 빨간펜 자국
+                                <span className="text-2xl mr-2">👎</span> A/S 받은 후 계속 있는 빨간펜 자국
                             </p>
                         </div>
                         <div className="group relative">
@@ -531,7 +529,7 @@ export default function ReviewPage() {
                                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-1 rounded-md font-bold">본인 직접 청소</div>
                             </div>
                             <p className="mt-3 text-blue-600 font-bold flex items-center">
-                                <span className="text-2xl mr-2">👍</span> 티슈로 문지르니 5초 만에 깨끗하게 삭제
+                                <span className="text-2xl mr-2">👍</span> 지워지는 자국
                             </p>
                         </div>
                     </div>
@@ -556,8 +554,8 @@ export default function ReviewPage() {
                     </h2>
                     <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
                         리모델링 후 소중한 우리 집, <br className="hidden md:block" />
-                        광고만큼의 전문성과 책임감은 찾아볼 수 없었습니다. <br />
-                        <span className="text-white font-bold underline decoration-red-500 underline-offset-4">추가금은 추가금대로 받고, 청소는 집주인이 다시 해야 하는 상황</span>을 느겼습니다.
+                        제 기대감이 컷던 탓 일까요?<br />
+                        <span className="text-white font-bold underline decoration-red-500 underline-offset-4">추가금을 지불하고, 꼼꼼한 청소는 집주인이 다시 해야 하는 상황</span>을 겪었습니다.
                     </p>
                     <div className="bg-white/10 p-6 rounded-2xl backdrop-blur-sm text-left max-w-xl mx-auto border border-white/20">
                         <p className="font-bold mb-2">💡 현명한 선택을 위한 팁:</p>
@@ -579,7 +577,11 @@ export default function ReviewPage() {
     );
 }
 
-function ImageBox({ src, alt, large = false }) {
+function ImageBox({ src, alt, large = false }: {
+    src: string;
+    alt: string;
+    large?: boolean;
+}) {
     return (
         <div
             className={`relative rounded-lg overflow-hidden ${

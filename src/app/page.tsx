@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 import { buildMetadata, generateJsonLd, getSEO } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 import ReviewBookmark from "@/components/ReviewBookmark";
@@ -16,8 +14,11 @@ export default function HomePage() {
                     {siteConfig?.name}
                 </h1>
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    업체의 광고성 글에 지친 분들을 위해, <br className="hidden md:block" />
+                    업체의 광고성 글에 혹하신 분들을 위해, <br className="hidden md:block" />
                     <span className="text-red-600 font-bold">100% 내돈내산</span> 실제 경험과 사진으로 기록한 솔직한 리뷰를 공유합니다.
+                </p>
+                <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    A/S 받고 미처리 상태에 대한 대답은 또 A/S.. 이러다 평생 보겠네
                 </p>
                 <div className="w-20 h-1 bg-red-600 mx-auto mt-6 rounded-full" />
             </section>

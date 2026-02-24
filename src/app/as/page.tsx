@@ -1,26 +1,90 @@
 import Image from "next/image";
 import {buildMetadata, generateJsonLd, getSEO} from "@/lib/seo";
+import ReviewBookmark from "@/components/ReviewBookmark";
 
 const PAGE_PATH = '/as'
 export const generateMetadata = () => buildMetadata(PAGE_PATH);
 
 export default function ASReviewPage() {
     return (
-        <article className="max-w-4xl mx-auto px-4 py-16 text-slate-800 leading-relaxed">
-            <header className="mb-16 text-center">
-                <span className="text-red-600 font-bold tracking-widest uppercase text-sm">A/S Fail</span>
-                <h1 className="text-3xl md:text-4xl font-black mt-4 mb-6 text-slate-900 leading-tight">
-                    "A/S에 또 A/S? 결국 제가 밤새 직접 닦았습니다"<br/>
-                    비포에프터클린 재방문 그 후
-                </h1>
-                <p className="text-lg text-slate-600">
-                    죄송하다는 사과와 빠른 피드백에 안심했던 짧은 순간, <br className="hidden md:block"/>
-                    그 믿음의 대가는 이사 전날의 밤샘 청소였습니다.
-                </p>
-            </header>
+        <article className="max-w-4xl mx-auto px-4 pb-16 text-slate-800 leading-relaxed">
+            <section className="mb-16">
+                <div className="bg-slate-900 rounded-[2rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+                    {/* 배경 장식 아이콘 */}
+                    <div className="absolute top-0 right-0 p-10 opacity-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-32 w-32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+
+                    <div className="relative z-10 space-y-8">
+                        <div>
+                            <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-2">Previous Summary</h2>
+                            <h3 className="text-3xl md:text-4xl font-black leading-tight">
+                                지난 리뷰 요약: <br/>
+                                63만원을 지불하고 마주한 처참한 현실
+                            </h3>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                            {/* 포인트 1: 배경 상황 */}
+                            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                                <span className="text-yellow-400 font-black text-2xl mb-2 block">01</span>
+                                <h4 className="font-bold text-lg mb-2 text-white">분진과의 전쟁 시작</h4>
+                                <p className="text-slate-300 text-sm leading-relaxed">
+                                    구축 오피스텔 전체 리모델링 후, 집안 곳곳을 뒤덮은 <strong>엄청난 분진 가루</strong>에 압도되었습니다. 직접 청소는 불가능하다 판단하여 신중하게 전문 업체를 물색했습니다.
+                                </p>
+                            </div>
+
+                            {/* 포인트 2: 업체 선정 이유 */}
+                            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                                <span className="text-yellow-400 font-black text-2xl mb-2 block">02</span>
+                                <h4 className="font-bold text-lg mb-2 text-white">이름에 걸었던 기대</h4>
+                                <p className="text-slate-300 text-sm leading-relaxed">
+                                    하청 없는 본사 직영 시스템과 확실한 사후 관리를 약속한 <strong>'비포에프터클린'</strong>을 선정했습니다. 추가 비용을 지불하더라도 완벽한 새집을 마주할 기대감에 부풀어 있었죠.
+                                </p>
+                            </div>
+
+                            {/* 포인트 3: 아쉬움과 A/S의 서막 */}
+                            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                                <span className="text-yellow-400 font-black text-2xl mb-2 block">03</span>
+                                <h4 className="font-bold text-lg mb-2 text-white">뼈아픈 비대면 검수</h4>
+                                <p className="text-slate-300 text-sm leading-relaxed">
+                                    업무로 인해 <strong>현장 검수를 직접 하지 못한 채</strong> 사진만 믿고 잔금을 입금했습니다. 하지만 퇴근 후 마주한 전문성이 결여된 결과물에 결국 <strong>재청소(A/S)</strong>를 요청하게 되었습니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="pt-6 border-t border-white/10 flex flex-col items-left justify-between gap-4">
+                            <p className="text-slate-400 text-sm">
+                                * 자세한 첫 번째 리뷰 내용이 궁금하시다면 이전 포스팅을 참고해 주세요.
+                            </p>
+
+                            <ReviewBookmark
+                                href="/review"
+                                thumbnail="/images/review/before-room-dust-main.jpg"
+                                title="안양 입주청소 후기 | 비포에프터클린, 추가금 63만원의 결과가 이렇다고?"
+                                description="업무로 직접 청소하지 못해 막막했던 리모델링 청소, 분진 제거 및 새집증후군 제거를 위해 전문가의 청소로 기대반 설렘반 비포에프터클린 업체 솔직 후기입니다. 업체 선정 전 반드시 확인하세요."
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
             {/* 2. 타임라인: 안심에서 의심으로 */}
             <section className="mb-20">
+                <header className="mb-16 text-center">
+                    <span className="text-red-600 font-bold tracking-widest uppercase text-sm">A/S Fail</span>
+                    <h1 className="text-3xl md:text-4xl font-black mt-4 mb-6 text-slate-900 leading-tight">
+                        "A/S에 또 A/S? 결국 제가 밤새 직접 닦았습니다"<br/> 비포에프터클린 A/S 후기
+
+                    </h1>
+                    <p className="text-lg text-slate-600">
+                        죄송하다는 사과와 빠른 피드백과 A/S 약속까지 안심했던 짧은 순간, <br className="hidden md:block"/>
+                        그 믿음의 대가는 이사 전날의 밤샘 청소였습니다.
+                    </p>
+                </header>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <ImageBox
                         src="/images/as/as-message-1.png"
@@ -35,8 +99,9 @@ export default function ASReviewPage() {
                         alt="a/s 요청 메시지 사진"
                     />
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
                     {/* 왼쪽: 문자 메시지 증거 이미지 */}
                     <div className="space-y-4 w-full">
                         <div className="relative rounded-2xl overflow-hidden border-4 border-white shadow-xl  bg-white">
@@ -44,7 +109,6 @@ export default function ASReviewPage() {
                             <ImageBox
                                 src="/images/as/as-message-4.png"
                                 alt="현관 비번 전송과 완료 문자가 담긴 실제 대화 내용"
-                                className="w-full h-auto block"
                                 full={true}
                             />
                             {/* 사진이 너무 길어 보일 수 있으니 강조용 빨간 테두리 효과만 살짝 줍니다 */}
@@ -56,7 +120,7 @@ export default function ASReviewPage() {
                     </div>
 
                     {/* 오른쪽: 타임라인 분석 */}
-                    <div className="relative pt-4">
+                    <div className="relative pt-4 flex flex-col justify-center h-full">
                         {/* 세로선 */}
                         <div className="absolute left-[11px] top-6 bottom-6 w-0.5 bg-slate-200" />
 
@@ -85,7 +149,7 @@ export default function ASReviewPage() {
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="font-bold text-red-600 text-lg">경악스러운 작업 시간: 단 40분</h4>
+                                    <h4 className="font-bold text-red-600 text-lg">작업 시간: 단 40분</h4>
                                     <div className="bg-white p-5 rounded-2xl border-2 border-red-100 mt-3 shadow-md">
                                         <div className="flex justify-between text-sm mb-2 pb-2 border-b border-slate-50">
                                             <span className="text-slate-500 font-medium">15:17</span>
@@ -103,7 +167,7 @@ export default function ASReviewPage() {
                                     </div>
                                     <p className="text-slate-500 text-xs mt-3 leading-relaxed">
                                         탈거 청소, 구석 분진, 화장실 벽면... 이 모든 걸 다시 확인했다면 <br className="hidden md:block" />
-                                        절대 나올 수 없는 시간입니다. 이때 눈치를 챘어야 했습니다.
+                                        절대 나올 수 없는 시간 아닐까요?
                                     </p>
                                 </div>
                             </div>
@@ -112,13 +176,14 @@ export default function ASReviewPage() {
                 </div>
             </section>
 
+
             <section className="my-20 space-y-10">
                 <div className="text-center mb-8">
                     <h3 className="text-2xl font-black text-slate-900">
                         "각별히 신경 써달라는 부탁, 그리고 약속"
                     </h3>
                     <p className="text-slate-500 mt-2 text-sm md:text-base">
-                        작업 완료 보고를 받고, 마지막으로 한 번 더 신신당부를 드렸던 대화 내용입니다.
+                        작업 완료 보고를 받고, 마지막으로 한 번 더 부탁 드렸던 통화 내용입니다.
                     </p>
                 </div>
 
@@ -178,13 +243,13 @@ export default function ASReviewPage() {
                             </div>
                         ))}
                     </div>
-                    <p className="text-center text-xs text-slate-400">▲ 청소팀장님이 "검토 완료"라며 전송한 사진들 (총 9장)</p>
+                    <p className="text-center text-xs text-slate-400">▲ 비포에프터클린 청소팀장님이 "검토 완료"라며 전송한 사진들 (총 9장)</p>
                 </div>
 
                 {/* 심경 변화 텍스트 */}
                 <div className="max-w-2xl mx-auto text-center py-8">
                     <p className="text-lg text-slate-700 leading-relaxed font-medium">
-                        전송된 9장의 사진들을 보니 꽤 깨끗해 보였습니다. <br className="hidden md:block"/>
+                        전송된 사진들을 보니 <br className="hidden md:block"/>
                         <span className="text-blue-600 font-bold">"고생하셨구나, 설마 해당 부분만 했겠어?"</span>라는 생각에 <br
                         className="hidden md:block"/>
                         더 이상의 확인 없이 기분 좋게 팀장님을 보내드렸습니다.
@@ -216,12 +281,11 @@ export default function ASReviewPage() {
                     <div className="flex flex-col justify-center space-y-4 bg-red-50 p-8 rounded-2xl">
                         <h4 className="text-xl font-bold text-red-700">모든 벽면에서 나오는 먼지</h4>
                         <p className="text-red-900/80 leading-relaxed font-medium">
-                            주방 상부장, 하부장... 사람 손이 가장 많이 닿는 곳임에도 갈색 분진이 그대로였습니다.
-                            분명히 '전체적으로 검토했다'는 말을 믿었는데, 제가 직접 닦으니 5초 만에 지워지는 자국들이 왜 전문가의 손길에는 남아있는 건지 이해할 수 없습니다.
+                            손이 닿는 모든 벽면에서 나오는 먼지, 주방 상부장, 하부장, 심지어 추가금을 낸 수납장까지 사람 손이 닿는 곳임에도 갈색 분진이 그대로였습니다.
+                            분명히 '전체적으로 검토했다'는 말을 믿었는데, 제가 직접 닦으니 지워지는 자국들이 왜 전문가의 손길에 남아있는 건지 참으로 아쉬움이 남네요.
                         </p>
                         <div className="bg-white/50 p-4 rounded-lg border border-red-200 text-sm italic">
-                            "시간이 지나고 다시 닦아보았습니다. 더 이상 묻어나오지 않더군요.
-                            결국 업체가 '안 닦았던 것'입니다."
+                            "시간이 지나고 다시 닦아보니, 더 이상 묻어나오지 않더군요.
                         </div>
                     </div>
                 </div>
@@ -237,11 +301,11 @@ export default function ASReviewPage() {
                     <h2 className="relative text-3xl md:text-5xl font-black text-slate-900 leading-tight">
                         비포에프터클린?<br/>
                         <span className="text-red-600 underline decoration-double decoration-red-600 underline-offset-8">
-                '애프터'가 없는 그들의 민낯
-            </span>
+                            '에프터'...?
+                        </span>
                     </h2>
                     <p className="mt-8 text-lg text-slate-600 font-medium">
-                        전문가가 40분간 훑고 지나간 자리,<br className="md:hidden"/> 제가 단 5초 만에 직접 닦아본 결과입니다.
+                        A/S를 받고 처리 됐다는 사진에 나온 그 곳,<br className="md:hidden"/> 제가 직접 닦으며 찍은 사진입니다.
                     </p>
                 </div>
 
@@ -249,11 +313,11 @@ export default function ASReviewPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
                         { src: "/images/as/as-self-clean-8.jpg", label: "주방 하부장 안쪽", desc: "손이 닿는 곳임에도 갈색 가루가 가득합니다." },
-                        { src: "/images/as/real-dust-2.jpg", label: "수납장 레일 위", desc: "한 번만 훑어도 시커먼 먼지가 묻어납니다." },
-                        { src: "/images/as/real-dust-3.jpg", label: "벽면 분진 상태", desc: "분명히 신경 써달라고 부탁드렸던 그 벽면입니다." },
-                        { src: "/images/as/real-dust-4.jpg", label: "문틀 상단", desc: "높은 곳은 아예 손도 대지 않은 모양새입니다." },
-                        { src: "/images/as/real-dust-5.jpg", label: "방등 내부", desc: "탈거 청소를 약속했지만 먼지가 그대로입니다." },
-                        { src: "/images/as/real-dust-6.jpg", label: "주방 상부장", desc: "시간이 지나고 제가 닦으니 말끔히 지워집니다." },
+                        { src: "/images/as/after-cabinet-clean-before.jpg", label: "수납장 레일, 수납장 위", desc: "한 번만 훑어도 시커먼 먼지가 묻어납니다." },
+                        { src: "/images/as/as-self-clean-1.png", label: "벽면 분진 상태", desc: "분명히 신경 써달라고 부탁드렸던 벽면인데.. " },
+                        { src: "/images/as/as-window.jpg", label: "창문 내부", desc: "창문도 먼지가 그대로 이길래 손으로 문질러보니 손자국이 그대로이네요." },
+                        { src: "/images/as/after-lamp-1.jpg", label: "방등 내부", desc: "탈거 청소를 약속 및 A/S 내용에도 포함이 된 내용인데, 먼지가 그대로입니다." },
+                        { src: "/images/as/as-self-clean-2.jpg", label: "주방 상부장", desc: "상부장 모서리, 경첩 부분 등 묻어 나오는 먼지" },
                     ].map((item, idx) => (
                         <div key={idx} className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:border-red-500 transition-all duration-300">
                             <div className="relative aspect-square">
@@ -279,7 +343,7 @@ export default function ASReviewPage() {
                 <div className="max-w-3xl mx-auto">
                     <div className="bg-red-50 rounded-3xl p-8 md:p-12 border-2 border-dashed border-red-200 relative">
                         <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-red-600 text-white px-6 py-2 rounded-full font-black shadow-xl">
-                            가장 화가 나는 포인트
+                            후기를 작성한 포인트
                         </div>
 
                         <div className="space-y-6 text-red-900 text-center md:text-left">
@@ -289,11 +353,8 @@ export default function ASReviewPage() {
                             <div className="h-px bg-red-200 w-full" />
                             <p className="text-base md:text-lg leading-relaxed font-medium">
                                 분진이 많은 집이라 어쩔 수 없다는 변명, <br/>
-                                전문가가 40분간 봐도 못 본 먼지를 일반인인 제가 5초 만에 닦아냈습니다. <br className="hidden md:block"/>
+                                전문가가 3시간 + A/S(40분) 작업 시 못 본 먼지를 일반인인 제가 검수 단 몇 분 만에 닦아냈습니다. <br className="hidden md:block"/>
                                 <strong>이게 과연 63만원짜리 청소 서비스의 '애프터'입니까?</strong>
-                            </p>
-                            <p className="text-slate-500 text-sm italic mt-4">
-                                * 이 사진들은 제가 업체에 직접 전송하며 항의했던 실제 상태들입니다.
                             </p>
                         </div>
                     </div>
@@ -307,10 +368,44 @@ export default function ASReviewPage() {
                 <div className="max-w-2xl mx-auto">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6">마지막 연락, 그리고 포기</h3>
                     <p className="text-slate-700 mb-8">
-                        이사가 당장 내일인데, 밤늦게 직접 청소를 하며 너무 화가 나 다시 연락을 드렸습니다.
-                        작업이 안 된 부분들을 따지니 돌아온 대답은 <strong>"A/S가 더 필요한 거냐"</strong>는 형식적인 물음뿐이었습니다.
-                        더 이상의 대화는 의미가 없다고 판단했고, 저는 조용히 후기를 남기기로 했습니다.
+                        이사가 당장 내일인데, 밤늦게 직접 청소를 하며 너무 화가 나 늦은 시간 임에도 불구하고 비포에프터클린 청소 팀장님에게 다시 연락을 드렸습니다.
+                        작업이 안 된 부분들을 따지니 돌아온 대답은 <strong>"A/S가 더 필요한 거냐"</strong>는 물음이었습니다.
+                        <br/>
+                        <strong>'A/S를 이미 받았는데, 또 A/S? 집에 가구 들어오고 정리하면 그때는?'</strong>이라는 생각에 <br/>
+                        더 이상의 대화는 의미가 없다고 판단했고, 저는 그냥 후기를 남기기로 했습니다.
                     </p>
+
+
+
+                    <div className="my-12 relative">
+                        {/* 배경에 깔리는 부드러운 하이라이트와 큰 따옴표 장식 */}
+                        <div className="absolute -top-10 -left-4 text-8xl text-slate-100 font-serif select-none">“</div>
+
+                        <div className="relative bg-slate-50 border-l-4 border-slate-900 p-8 md:p-10 rounded-r-3xl shadow-sm">
+                            <div className="space-y-6 text-slate-700">
+                                <p className="text-xl md:text-2xl font-bold text-slate-900 leading-snug">
+                                    "분진이 많아서 어쩔 수 없다고요?"
+                                </p>
+
+                                <div className="space-y-4 text-base md:text-lg leading-relaxed">
+                                    <p>
+                                        그럼 <span className="text-red-600 font-bold underline decoration-2 underline-offset-4">분진 + 새집증후군 비용</span>은 대체 왜 받으신 건가요?
+                                        작업을 완수할 수 없는 환경이었다면 차라리 처음부터 말씀해 주시는 게 맞지 않았을까요?
+                                        <br/>
+                                        다른 구축 인테리어 집들은 대체 어떻게 청소하시는 건지... 정말 의문만 남습니다.
+                                    </p>
+
+                                    <p className="font-medium">
+                                        분진과 먼지를 제거하는 게 입주 청소의 본질일 텐데,
+                                        업체가 다녀간 뒤에도 물걸레에 시커먼 먼지가 그대로 묻어 나오는 상황을 보니
+                                        <span className="bg-yellow-100 px-1 font-bold text-slate-900 uppercase">'차라리 내가 직접 할걸'</span>이라는 후회만 가득합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="absolute -bottom-10 -right-4 text-8xl text-slate-100 font-serif rotate-180 select-none">“</div>
+                    </div>
 
                     <div className="bg-black text-white p-8 rounded-3xl shadow-xl">
                         <h4 className="text-xl font-black mb-4 text-red-500">결론: 이런 업체는 피하는게 좋지 않을까요?</h4>
@@ -334,6 +429,8 @@ export default function ASReviewPage() {
                     </div>
                 </div>
             </section>
+
+
             <script type="application/ld+json"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify(generateJsonLd(getSEO(PAGE_PATH)))
@@ -344,7 +441,12 @@ export default function ASReviewPage() {
 }
 
 
-function ImageBox({ src, alt, large = false, full = false }) {
+function ImageBox({ src, alt, large = false, full = false }: {
+    src: string;
+    alt: string;
+    large?: boolean;
+    full?: boolean;
+}) {
     return (
         <div
             className={`relative rounded-lg overflow-hidden ${
