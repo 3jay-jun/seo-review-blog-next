@@ -22,7 +22,7 @@ export default function ASReviewPage() {
                             <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-2">Previous Summary</h2>
                             <h3 className="text-3xl md:text-4xl font-black leading-tight">
                                 지난 리뷰 요약: <br/>
-                                63만원을 지불하고 마주한 처참한 현실
+                                63만원을 지불하고 마주한 현실
                             </h3>
                         </div>
 

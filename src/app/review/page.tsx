@@ -443,7 +443,7 @@ export default function ReviewPage() {
 
                         <div className="border border-red-100 p-6 rounded-2xl shadow-sm bg-red-50/30">
                             <h4 className="text-lg font-bold mb-4 flex items-center text-red-600">
-                                <span className="mr-2">❌</span> 직접 확인한 처참한 현실
+                                <span className="mr-2">❌</span> 직접 확인한 현실
                             </h4>
                             <ul className="space-y-3 text-gray-800 font-medium">
                                 <li className="flex items-start">
